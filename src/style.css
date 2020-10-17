@@ -1,0 +1,227 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+/* For the "inset" look only */
+html {
+    overflow: auto;
+}
+
+/* Let's get this party started */
+::-webkit-scrollbar {
+    width: 5px;
+}
+ 
+/* Track */
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    background: rgba(155, 157, 189, 0.8); 
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+
+
+                        /*  Header style  */
+.header {
+    padding: 20px;
+    background: linear-gradient(45deg, #555d84, #cb8561);
+    color: whitesmoke;
+    box-shadow: 0 0 12px rgba(0,0,0,0.5);
+}
+.header-section {
+    display: flex;
+    align-items: center;
+}
+#title-text {
+    text-decoration: none;
+    color: whitesmoke;
+}
+.favorites {
+    display: flex; 
+    margin-left: auto;
+}
+
+#fav-btn {
+    background-color: transparent;
+    box-shadow: 0px 0px 20px rgba(77, 67, 67, 0.5);
+    color: whitesmoke;
+    font-size: 17px;
+    font-family: Arial,sans-serif;
+    outline: none;
+    border-radius: 19px;
+    border-style: none;
+    width: 150px;
+    height: 50px;
+}
+#fav-btn:hover {
+    color: rgb(243, 246, 70);
+    box-shadow: 10px 5px 12px rgba(77, 67, 67, 0.8);
+}
+#fav-btn:active {
+    color: #c00;
+}
+
+
+                            /*  Header style end */
+
+.main {
+    align-items: flex-start;
+    display: flex;
+ }
+
+                        /*  Search style  */
+.search-line {
+    display: flex; 
+}
+.search-input-wrap {
+    display: flex;
+    margin: 0 auto;
+}
+    
+.search-input {
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    margin-right: 20px;
+    padding: 8px 15px;
+    height: 40px;
+    font-size: 21px;
+   
+}
+.search-input::placeholder {
+    font-size: 15px;
+    font-family: Arial,sans-serif;
+}
+.busy-label {
+    margin-top: 30px;
+    font-size: 15px;
+    font-family: Arial,sans-serif;
+}
+
+                        /*  jobElement style  */
+.jobs {
+    padding: 0;
+}
+.job-head {
+    display: block;
+}
+.job-date {
+    float: right;
+}
+
+.chosen-btn {
+    padding: 5px;
+    margin: 5px 5px 0px;
+    background-color: grey;
+    color: whitesmoke;
+    border-radius: 15px;
+}
+
+.chosen-btn:focus {
+    outline: none;
+}
+.chosen-btn:after {
+    content: "В Избранное";
+}
+
+.pressed-button {
+    background-color: teal;
+    color: whitesmoke;
+    padding: 5px;
+    margin: 5px 5px 0px;
+}
+
+.pressed-button:after {
+    content: "Добавлено";
+}
+
+.job-item {
+    list-style-type: none;
+    overflow: auto;
+    padding: 15px;
+    border: 1px solid #e7e7e7;
+}
+.job-busy {
+    font-family: Arial,sans-serif;
+    font-size: 12px;
+    color: #999;
+    padding: 5px;
+}
+.job-title a {
+    text-decoration: none;
+    font-family: Arial,sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    padding-left: 5px;
+}
+.job-item a:link  {
+    color: #09f;
+}
+.job-item a:hover  {
+    color: #c00;
+}
+.job-item a:visited  {
+    color: #7f3cba;
+}
+
+.job-company a {
+    text-decoration: none;
+    font-family: Arial,sans-serif;
+    font-size: 15px;
+    color: #999;
+    padding-left: 5px;
+}
+.job-location {
+    font-size: 15px;
+    color: #999;
+    padding-left: 5px;
+}
+.company-img a {
+    float: right;
+}
+.job-apply {
+    font-size: 15px;
+    color: #333;
+    padding-left: 5px;
+}
+.jobs-wrapper {
+    margin:0 auto;
+    width: 980px;
+    margin-top: 7px;
+}
+                        /*  jobLogo style  */
+.logo {
+    width: 50px;
+}
+
+.pagination {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    width: 100%;
+    height: 30px;
+    background-color: #c8dbff;
+    border-radius: 5px;
+    text-align: center;
+    display: none;
+}
+
+.fav-title {
+    color: #09f;
+    text-align: center;
+    padding: 20px;
+}
+.fav-title h3:after {
+    font-family: FontAwesome;
+    content: " \f058";
+    font-size: 30px;    
+}
