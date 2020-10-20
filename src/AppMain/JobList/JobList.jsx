@@ -4,34 +4,17 @@ import { JobItem } from './JobItem/JobItem'
 
 export default class JobList extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {display: 'none', buttonView: false};
-  }
-
   render () {
-
-    const { jobItemsData = [] } = this.props
-
+    const { jobItemsData = [] } = this.props;
+  
     return (
       <div className="jobs-wrapper">
-        {jobItemsData.map((jobItemData, index) => {
-          return (
-            <JobItem jobData={jobItemData} key={index}/>
-          )
-        })}
-        <button className="pagination" onClick={this.onMoreClick}>Показать ещё</button>
+        <ul className="jobs">
+          {jobItemsData.map((jobItemData) => {
+            return <JobItem jobData={jobItemData} key={jobItemsData.id}/>;
+          })}
+        </ul>
       </div>
     );
   }
-
-  onMoreClick = () => {
-    this.debounce(this.loadJobs.bind(this), 500);
-    this.currentPage = 1;
-  };
-
-  toogleLoadMore(state) {
-    this.setState({buttonView: !state.buttonView});
-  }
-
 }

@@ -1,19 +1,19 @@
 
 import React from 'react';
 
-import JobList from './JobList/JobList'
+import Loader from '../Loader/Loader'
+import JobList from './JobList/JobList';
 
-import { jobItemsData } from '../utils/jobItemsData'
 
 // AppMain START
 
 const  AppMain = (props) => {
 
-  const { jobItemsData = [] } = props
-
+  const { jobItemsData = [], isFetching } = props
+  
   return (
     <div className='main'>
-      <JobList jobItemsData={jobItemsData}/>
+      {isFetching ? <Loader /> : <JobList jobItemsData={jobItemsData} />}
     </div>
   );
 }

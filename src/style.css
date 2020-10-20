@@ -94,9 +94,9 @@ html {
     margin-top: 20px;
     margin-right: 20px;
     padding: 8px 15px;
-    height: 40px;
-    font-size: 21px;
-   
+    line-height: 25px;
+    font-size: 18px;
+    width: 250px;;
 }
 .search-input::placeholder {
     font-size: 15px;
@@ -141,9 +141,9 @@ html {
     margin: 5px 5px 0px;
 }
 
-.pressed-button:after {
+ .pressed-button:after {
     content: "Добавлено";
-}
+} 
 
 .job-item {
     list-style-type: none;
@@ -206,13 +206,13 @@ html {
 
 .pagination {
     margin-top: 15px;
-    margin-bottom: 15px;
+    margin-bottom: 30px;
     width: 100%;
-    height: 30px;
+    height: 35px;
     background-color: #c8dbff;
     border-radius: 5px;
-    text-align: center;
-    display: none;
+    align-items: center;
+    justify-content: center;
 }
 
 .fav-title {
@@ -224,4 +224,18 @@ html {
     font-family: FontAwesome;
     content: " \f058";
     font-size: 30px;    
+}
+
+.loader {
+  position: fixed;
+  left: 45%;
+  top: 40%;
+	align-items: center;
+	width: 70px;
+}
+
+.btn {
+	position: fixed;
+	right: 50px;
+	bottom: 30px;
 }
