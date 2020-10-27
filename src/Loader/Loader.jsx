@@ -4,7 +4,7 @@ import loader from '../img/loader.gif';
 function Loader() {
   return (
     <div>
-      <img className="loader" alt="Загрузка" src={loader} />
+      <img className="loader" alt="Загрузка..." src={loader} />
     </div>
   );
 }

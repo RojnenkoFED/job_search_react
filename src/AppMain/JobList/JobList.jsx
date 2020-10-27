@@ -4,18 +4,6 @@ import { JobItem } from './JobItem/JobItem'
 
 export default class JobList extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      buttonState: 'chosen-btn',
-      buttonStatePressed: 'pressed-button'
-    }
-  }
-
-  setButtonState = (style) => {
-    this.setState( {buttonState: style} );
-  }
-
   render () {
     const { jobItemsData = [] } = this.props;
     return (
@@ -28,4 +16,5 @@ export default class JobList extends React.Component {
       </div>
     );
   }
+  
 }

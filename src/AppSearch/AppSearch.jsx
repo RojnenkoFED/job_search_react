@@ -1,7 +1,5 @@
 import React from 'react';
 
-// AppSearch START
-
 class AppSearch extends React.Component {
 
   constructor(props) {
@@ -116,4 +114,3 @@ class AppSearch extends React.Component {
 
 export default AppSearch;
 
-// AppSearch END
