@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 // AppSearch START
 
@@ -6,32 +6,29 @@ class AppSearch extends React.Component {
 
   constructor(props) {
     super(props);
-    //this.currentPage = 1;
     this.state = {
       description: '',
       location: '',
       fullTime: '',
-      disabledPre: true,
-      disabledNext: true,
       currentPage: 1
     };
   }
 
   render() {
     const { description, location} = this.state;
-
+    const { disabledPre, disabledNext } = this.props;
     return (
       <div className="search-line">
         <div className="search-input-wrap">
           <form onSubmit={this.handleSubmit}>
+            <label className="busy-label">
+              <input  type="checkbox" onClick={this.handleClick} /> Full time
+            </label>
             <input className="search-input" placeholder="Введите описание вакансии" onChange={this.onDescriptionInputChange} value={description} />
             <input className="search-input" placeholder="Введите местоположение" onChange={this.onLocationInputChange} value={location} />
-            <label className="busy-label">
-              <input className="busy-input" type="checkbox" onClick={this.handleClick} /> Full time
-            </label>
-            <input type="submit" value="Отправить" hidden/>
-            <button class="btn btn-dark" onClick={this.previousPage} hidden={this.state.disabledPre}>Назад</button>
-            <button class="btn btn-dark" onClick={this.nextPage}  hidden={this.state.disabledNext}>Вперед</button>
+            <button className="submit-button" type="submit"><i class="fa fa-search"></i></button>
+            <button className="btn btn-dark" onClick={this.previousPage} hidden={disabledPre}>Назад</button>
+            <button className="btn btn-dark" onClick={this.nextPage}  hidden={disabledNext}>Вперед</button>
           </form> 
         </div>
       </div>
@@ -41,28 +38,26 @@ class AppSearch extends React.Component {
   nextPage = (e) => {
     const { description, location, fullTime, currentPage } = this.state;
     e.preventDefault();
-    //this.currentPage += 1;
     this.props.setIsFetching(true);
-    this.setState({ disabledNext: true});
+    this.props.setPaginationNext(true);
     this.fetchData(description, location, currentPage + 1, fullTime);
 
     if ( this.props.jobItemsData.lenght < 50 ) {
-      this.setState({ disabledNext: true});
+      this.props.setPaginationNext(true);
     } 
-    this.setState({ disabledPre: false});
+    this.props.setPaginationPre(false);
   }
 
   previousPage = (e) => {
     const { description, location, fullTime, currentPage } = this.state;
     e.preventDefault();
-    //this.currentPage -= 1;
     this.props.setIsFetching(true);
     this.fetchData(description, location, currentPage - 1, fullTime);
 
     if (currentPage === 1) {
-      this.setState({ disabledPre: true});
+      this.props.setPaginationPre(true);
     }       
-    this.setState({ disabledNext: false});
+    this.props.setPaginationNext(false);
   }
 
   async fetchData(descriptionValue, locationValue, currentPage, fulltimeValue) {
@@ -74,15 +69,15 @@ class AppSearch extends React.Component {
         if (res.length === 0) {
           alert(`По запросу ${descriptionValue} и ${locationValue} ничего не найдено.`);
         } else if (res.length >= 50) {
-          this.setState({ disabledNext: false});
+          this.props.setPaginationNext(false);
         } else {
-          this.setState({ disabledNext: true});
+          this.props.setPaginationNext(true);
         }
        })
       ); 
     } 
     catch (err) {
-      console.log('Error:' + err);
+      console.log('Error: ' + err);
     }
   }
 
@@ -97,8 +92,8 @@ class AppSearch extends React.Component {
 
   handleSubmit = (e) => {
     const { description, location, fullTime, currentPage } = this.state;
-    this.setState({ disabledNext: true});
-    this.setState({ disabledPre: true});
+    this.props.setPaginationNext(true);
+    this.props.setPaginationPre(true);
     e.preventDefault();
 
     if ( !description && !location ) {

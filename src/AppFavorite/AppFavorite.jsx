@@ -1,16 +1,18 @@
 import React from 'react';
-import JobList from '../AppMain/AppMain';
+import FavJobList from './FavJobList/FavJobList';
 
-const AppFavorite = (props) => {
+const AppFavorite = () => {
   
-  const { localStorageData } = props
+  let list = [];
+  let keys = Object.keys(localStorage);
+    for(let key of keys) {
+      let object = JSON.parse(`${localStorage.getItem(key)}`);
+      list.push(object);
+    }
 
   return (
     <div id="fav">
-      <div className="fav-title">
-        <h3>Вы отметили это</h3>
-      </div>
-      <JobList id="fav-jobs" localStorageData={localStorageData} />
+      <FavJobList jobItemsData={list} />
     </div>
   )
 }

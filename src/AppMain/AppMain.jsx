@@ -9,11 +9,10 @@ import JobList from './JobList/JobList';
 
 const  AppMain = (props) => {
 
-  const { jobItemsData = [], isFetching } = props
-  
+  const { jobItemsData = [], isFetching, buttonState, setButtonStyle } = props;
   return (
     <div className='main'>
-      {isFetching ? <Loader /> : <JobList jobItemsData={jobItemsData} />}
+      {isFetching ? <Loader /> : <JobList jobItemsData={jobItemsData} buttonState={buttonState} setButtonStyle={setButtonStyle} />}
     </div>
   );
 }

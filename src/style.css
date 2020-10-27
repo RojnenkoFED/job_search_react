@@ -9,6 +9,9 @@ html {
     overflow: auto;
 }
 
+form {
+    display: flex;
+}
 /* Let's get this party started */
 ::-webkit-scrollbar {
     width: 5px;
@@ -29,11 +32,13 @@ html {
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
 }
 
-
+#app {
+    min-height: calc(100vh - 60px);
+}
                         /*  Header style  */
 .header {
-    padding: 20px;
-    background: linear-gradient(45deg, #555d84, #cb8561);
+    padding: 32px;
+    background: linear-gradient(45deg, #555d84, teal);
     color: whitesmoke;
     box-shadow: 0 0 12px rgba(0,0,0,0.5);
 }
@@ -41,6 +46,7 @@ html {
     display: flex;
     align-items: center;
 }
+
 #title-text {
     text-decoration: none;
     color: whitesmoke;
@@ -48,47 +54,50 @@ html {
 .favorites {
     display: flex; 
     margin-left: auto;
+    
 }
 
 #fav-btn {
-    background-color: transparent;
-    box-shadow: 0px 0px 20px rgba(77, 67, 67, 0.5);
+    background-color: #555d84;
+    box-shadow: 10px 5px 12px rgba(77, 67, 67, 0.8);
     color: whitesmoke;
-    font-size: 17px;
+    font-size: 18px;
     font-family: Arial,sans-serif;
     outline: none;
-    border-radius: 19px;
+    border-radius: 30px;
     border-style: none;
     width: 150px;
     height: 50px;
 }
 #fav-btn:hover {
-    color: rgb(243, 246, 70);
-    box-shadow: 10px 5px 12px rgba(77, 67, 67, 0.8);
+    background-color: rgba(155, 174, 189, 0.4);
+    transition: .15s;
+    box-shadow: 0 4px 12px rgba(0,0,0,.12);
 }
 #fav-btn:active {
-    color: #c00;
+    background-color: transparent;
 }
-
 
                             /*  Header style end */
 
 .main {
     align-items: flex-start;
     display: flex;
+    flex: 1 0 auto;
  }
 
                         /*  Search style  */
 .search-line {
-    display: flex; 
+    display: flex;
+    background-color: rgba(155, 174, 189, 0.2);
 }
 .search-input-wrap {
     display: flex;
     margin: 0 auto;
 }
-    
+
 .search-input {
-    border: 2px solid #ccc;
+    border: 2px solid #555d84;
     border-radius: 5px;
     margin-bottom: 10px;
     margin-top: 20px;
@@ -102,8 +111,10 @@ html {
     font-size: 15px;
     font-family: Arial,sans-serif;
 }
+
 .busy-label {
     margin-top: 30px;
+    margin-right: 20px;
     font-size: 15px;
     font-family: Arial,sans-serif;
 }
@@ -113,7 +124,8 @@ html {
     padding: 0;
 }
 .job-head {
-    display: block;
+    display: flex;
+    justify-content: space-between;
 }
 .job-date {
     float: right;
@@ -122,9 +134,9 @@ html {
 .chosen-btn {
     padding: 5px;
     margin: 5px 5px 0px;
-    background-color: grey;
     color: whitesmoke;
     border-radius: 15px;
+    background-color: grey;
 }
 
 .chosen-btn:focus {
@@ -135,22 +147,28 @@ html {
 }
 
 .pressed-button {
-    background-color: teal;
-    color: whitesmoke;
     padding: 5px;
     margin: 5px 5px 0px;
+    color: whitesmoke;
+    border-radius: 15px;
+    background-color: teal;
 }
 
  .pressed-button:after {
     content: "Добавлено";
 } 
 
+.pressed-button:focus {
+    outline: none;
+}
+
 .job-item {
     list-style-type: none;
-    overflow: auto;
     padding: 15px;
     border: 1px solid #e7e7e7;
+    flex: 1;
 }
+
 .job-busy {
     font-family: Arial,sans-serif;
     font-size: 12px;
@@ -186,17 +204,23 @@ html {
     color: #999;
     padding-left: 5px;
 }
-.company-img a {
-    float: right;
+
+.company-img{
+    display: flex;
+    align-items: center;
 }
+
 .job-apply {
     font-size: 15px;
     color: #333;
     padding-left: 5px;
+    overflow: hidden;
 }
+
 .jobs-wrapper {
-    margin:0 auto;
-    width: 980px;
+    margin: 0 auto;
+    max-width: 980px;
+    min-width: 400px;
     margin-top: 7px;
 }
                         /*  jobLogo style  */
@@ -230,12 +254,62 @@ html {
   position: fixed;
   left: 45%;
   top: 40%;
-	align-items: center;
-	width: 70px;
+  align-items: center;
+  width: 70px;
 }
 
 .btn {
 	position: fixed;
 	right: 50px;
-	bottom: 30px;
+    bottom: 30px;
+    background-color: #555d84;
+    border-radius: 30px;
+}
+
+.fa {
+    float: right;
+    color: red;
+    font-size: 20px;
+}
+
+.fa:hover{
+    color: plum;
+}
+
+.fa:active{
+    color: #000;
+}
+
+.responce {
+    margin: 15px 0 10px 0;
+    padding-bottom: 15px;
+    font-size: 22px;
+    color: #294455;
+    border-bottom: 1px solid #ddd;
+}
+
+.submit-button {
+    border-style: none;
+    background-color: transparent;
+    padding-top: 8px;
+}
+
+.submit-button:focus {
+    outline: none;
+}
+
+.fa-search {
+    color: #555d84;
+    font-size: 30px;  
+}
+
+#footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    font-size: 13px;
+    color: #999;
+    background-color: rgba(155, 174, 189, 0.2);
+    border-top: 1px solid #ddd;
 }
