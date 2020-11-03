@@ -1,6 +1,6 @@
 import React from 'react'
-
-import { FavJobItem } from './FavJobItem/FavJobItem'
+import FavJobItem from './FavJobItem/FavJobItem'
+import './FavJobList.css'
 
 export default class FavJobList extends React.Component {
 
@@ -9,8 +9,7 @@ export default class FavJobList extends React.Component {
   }
 
   render() {
-
-    const { jobItemsData = [] } = this.props;
+    const { jobItemsData } = this.props;
     return (
       <div className="jobs-wrapper" >
         <div className="fav-title">
@@ -24,5 +23,4 @@ export default class FavJobList extends React.Component {
       </div>
     );
   }
-
 }

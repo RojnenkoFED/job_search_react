@@ -1,6 +1,6 @@
 import React from 'react';
 
-export class JobItem extends React.Component {
+export default class JobItem extends React.Component {
 
   state = {
     done: this.props.buttonState
@@ -87,6 +87,7 @@ const JobApply = (props) => {
 
 const JobDate = (props) => {
   let DatePosting = props.date;
+  // eslint-disable-next-line no-empty-pattern
   let splits = [] = DatePosting.split(' ', 6);
   return <div className="job-date">{splits[2]} {splits[1]} {splits[5]}</div>;
 };

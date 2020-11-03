@@ -1,6 +1,7 @@
-import React from 'react';
+import React from 'react'
+import './FavJobItem.css'
 
-export class FavJobItem extends React.Component {
+export default class FavJobItem extends React.Component {
 
   state = {
     listItem: true
@@ -12,7 +13,7 @@ export class FavJobItem extends React.Component {
   }
 
   render() {
-    const { jobItemData = [] } = this.props;
+    const { jobItemData } = this.props;
     const { listItem } = this.state;
     if (listItem) {
       return (
@@ -28,5 +29,4 @@ export class FavJobItem extends React.Component {
     }
     return true;
   }
-
 }

@@ -1,4 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../store/actions';
+import './AppSearch.css'
 
 class AppSearch extends React.Component {
 
@@ -14,7 +17,7 @@ class AppSearch extends React.Component {
 
   render() {
     const { description, location} = this.state;
-    const { disabledPre, disabledNext } = this.props;
+    const { disabledPre, disabledNext} = this.props;
     return (
       <div className="search-line">
         <div className="search-input-wrap">
@@ -24,7 +27,7 @@ class AppSearch extends React.Component {
             </label>
             <input className="search-input" placeholder="Введите описание вакансии" onChange={this.onDescriptionInputChange} value={description} />
             <input className="search-input" placeholder="Введите местоположение" onChange={this.onLocationInputChange} value={location} />
-            <button className="submit-button" type="submit"><i class="fa fa-search"></i></button>
+            <button className="submit-button" type="submit"><i className="fa fa-search"></i></button>
             <button className="btn btn-dark" onClick={this.previousPage} hidden={disabledPre}>Назад</button>
             <button className="btn btn-dark" onClick={this.nextPage}  hidden={disabledNext}>Вперед</button>
           </form> 
@@ -36,7 +39,7 @@ class AppSearch extends React.Component {
   nextPage = (e) => {
     const { description, location, fullTime, currentPage } = this.state;
     e.preventDefault();
-    this.props.setIsFetching(true);
+    this.props.searchLoad(); 
     this.props.setPaginationNext(true);
     this.fetchData(description, location, currentPage + 1, fullTime);
 
@@ -49,7 +52,7 @@ class AppSearch extends React.Component {
   previousPage = (e) => {
     const { description, location, fullTime, currentPage } = this.state;
     e.preventDefault();
-    this.props.setIsFetching(true);
+    this.props.searchLoad();
     this.fetchData(description, location, currentPage - 1, fullTime);
 
     if (currentPage === 1) {
@@ -59,13 +62,14 @@ class AppSearch extends React.Component {
   }
 
   async fetchData(descriptionValue, locationValue, currentPage, fulltimeValue) {
+    const url = 'http://localhost:7000/api?';
     try {
-      return await fetch(`http://localhost:7000/api?description=${descriptionValue}&location=${locationValue}&page=${currentPage}&full_time=${fulltimeValue}`)
+      return await fetch(`${url}description=${descriptionValue}&location=${locationValue}&page=${currentPage}&full_time=${fulltimeValue}`)
       .then(res => res.json().then(res => {
-        this.props.setJobItemsData(res);
-
+        this.props.searchSuccess(res);  
+        
         if (res.length === 0) {
-          alert(`По запросу ${descriptionValue} и ${locationValue} ничего не найдено.`);
+          this.props.searchNoResult();
         } else if (res.length >= 50) {
           this.props.setPaginationNext(false);
         } else {
@@ -90,14 +94,13 @@ class AppSearch extends React.Component {
 
   handleSubmit = (e) => {
     const { description, location, fullTime, currentPage } = this.state;
-    this.props.setPaginationNext(true);
-    this.props.setPaginationPre(true);
     e.preventDefault();
 
     if ( !description && !location ) {
-      console.log('нет данных');
+      console.log('Нет данных');
+      this.props.searchNoResult();
     } else {
-      this.props.setIsFetching(true);
+      this.props.searchLoad();
       this.fetchData(description, location, currentPage, fullTime);
     }
   }
@@ -109,8 +112,16 @@ class AppSearch extends React.Component {
   onLocationInputChange = (e) => {
     this.setState({ location: e.target.value });
   };
-
 }
 
-export default AppSearch;
+const mapStateToProps = (state) => {
+  return {
+    disabledPre: state.disabledPre,
+    disabledNext: state.disabledNext,
+    jobItemsData: state.jobItemsData
+  }
+}
+
+
+export default connect(mapStateToProps, actions)(AppSearch);
 

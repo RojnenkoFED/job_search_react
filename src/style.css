@@ -4,19 +4,14 @@
     box-sizing: border-box;
   }
 
-/* For the "inset" look only */
 html {
     overflow: auto;
 }
 
-form {
-    display: flex;
-}
-/* Let's get this party started */
 ::-webkit-scrollbar {
     width: 5px;
 }
- 
+
 /* Track */
 ::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
@@ -32,97 +27,13 @@ form {
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
 }
 
-#app {
-    min-height: calc(100vh - 60px);
-}
-                        /*  Header style  */
-.header {
-    padding: 32px;
-    background: linear-gradient(45deg, #555d84, teal);
-    color: whitesmoke;
-    box-shadow: 0 0 12px rgba(0,0,0,0.5);
-}
-.header-section {
-    display: flex;
-    align-items: center;
+.fa-search {
+	color: #555d84;
+	font-size: 30px;  
 }
 
-#title-text {
-    text-decoration: none;
-    color: whitesmoke;
-}
-.favorites {
-    display: flex; 
-    margin-left: auto;
-    
-}
+                        /*  JobItem style  */
 
-#fav-btn {
-    background-color: #555d84;
-    box-shadow: 10px 5px 12px rgba(77, 67, 67, 0.8);
-    color: whitesmoke;
-    font-size: 18px;
-    font-family: Arial,sans-serif;
-    outline: none;
-    border-radius: 30px;
-    border-style: none;
-    width: 150px;
-    height: 50px;
-}
-#fav-btn:hover {
-    background-color: rgba(155, 174, 189, 0.4);
-    transition: .15s;
-    box-shadow: 0 4px 12px rgba(0,0,0,.12);
-}
-#fav-btn:active {
-    background-color: transparent;
-}
-
-                            /*  Header style end */
-
-.main {
-    align-items: flex-start;
-    display: flex;
-    flex: 1 0 auto;
- }
-
-                        /*  Search style  */
-.search-line {
-    display: flex;
-    background-color: rgba(155, 174, 189, 0.2);
-}
-.search-input-wrap {
-    display: flex;
-    margin: 0 auto;
-}
-
-.search-input {
-    border: 2px solid #555d84;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    margin-top: 20px;
-    margin-right: 20px;
-    padding: 8px 15px;
-    line-height: 25px;
-    font-size: 18px;
-    width: 250px;;
-}
-.search-input::placeholder {
-    font-size: 15px;
-    font-family: Arial,sans-serif;
-}
-
-.busy-label {
-    margin-top: 30px;
-    margin-right: 20px;
-    font-size: 15px;
-    font-family: Arial,sans-serif;
-}
-
-                        /*  jobElement style  */
-.jobs {
-    padding: 0;
-}
 .job-head {
     display: flex;
     justify-content: space-between;
@@ -154,7 +65,7 @@ form {
     background-color: teal;
 }
 
- .pressed-button:after {
+.pressed-button:after {
     content: "Добавлено";
 } 
 
@@ -223,93 +134,11 @@ form {
     min-width: 400px;
     margin-top: 7px;
 }
-                        /*  jobLogo style  */
+
+.jobs {
+	padding: 0;
+}
+
 .logo {
     width: 50px;
-}
-
-.pagination {
-    margin-top: 15px;
-    margin-bottom: 30px;
-    width: 100%;
-    height: 35px;
-    background-color: #c8dbff;
-    border-radius: 5px;
-    align-items: center;
-    justify-content: center;
-}
-
-.fav-title {
-    color: #09f;
-    text-align: center;
-    padding: 20px;
-}
-.fav-title h3:after {
-    font-family: FontAwesome;
-    content: " \f058";
-    font-size: 30px;    
-}
-
-.loader {
-  position: fixed;
-  left: 45%;
-  top: 40%;
-  align-items: center;
-  width: 70px;
-}
-
-.btn {
-	position: fixed;
-	right: 50px;
-    bottom: 30px;
-    background-color: #555d84;
-    border-radius: 30px;
-}
-
-.fa {
-    float: right;
-    color: red;
-    font-size: 20px;
-}
-
-.fa:hover{
-    color: plum;
-}
-
-.fa:active{
-    color: #000;
-}
-
-.responce {
-    margin: 15px 0 10px 0;
-    padding-bottom: 15px;
-    font-size: 22px;
-    color: #294455;
-    border-bottom: 1px solid #ddd;
-}
-
-.submit-button {
-    border-style: none;
-    background-color: transparent;
-    padding-top: 8px;
-}
-
-.submit-button:focus {
-    outline: none;
-}
-
-.fa-search {
-    color: #555d84;
-    font-size: 30px;  
-}
-
-#footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 60px;
-    font-size: 13px;
-    color: #999;
-    background-color: rgba(155, 174, 189, 0.2);
-    border-top: 1px solid #ddd;
 }

@@ -1,7 +1,8 @@
 import React from 'react';
 import loader from '../img/loader.gif';
+import './loader.css'
 
-function Loader() {
+const Loader = () => {
   return (
     <div>
       <img className="loader" alt="Загрузка..." src={loader} />

@@ -9,13 +9,7 @@ const AppFavorite = () => {
     let object = JSON.parse(`${localStorage.getItem(key)}`);
     list.push(object);
   }
-
-  return (
-    <div id="fav">
-      <FavJobList jobItemsData={list} />
-    </div>
-  );
-
+  return <FavJobList jobItemsData={list} />;
 }
 
 export default AppFavorite;
