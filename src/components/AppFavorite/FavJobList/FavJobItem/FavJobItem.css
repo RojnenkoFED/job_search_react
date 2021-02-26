@@ -1,0 +1,13 @@
+.fa {
+  float: right;
+  color: red;
+  font-size: 20px;
+}
+
+.fa:hover{
+  color: plum;
+}
+
+.fa:active{
+  color: #000;
+}

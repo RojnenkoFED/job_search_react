@@ -1,0 +1,14 @@
+.main {
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+}
+
+.main img {
+  display: block;
+  margin: 0 auto;
+}
+
+.welcome-img {
+  width: 70vh;
+}

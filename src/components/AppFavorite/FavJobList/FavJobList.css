@@ -1,0 +1,20 @@
+.responce {
+  margin: 15px 0 10px 0;
+  padding-bottom: 15px;
+  font-size: 22px;
+  color: #294455;
+  border-bottom: 1px solid #ddd;
+}
+
+.fav-title {
+  color: #09f;
+  text-align: center;
+  padding: 20px;
+}
+
+.fav-title h3:after {
+  font-family: FontAwesome;
+  content: " \f058";
+  font-size: 30px;    
+}
+
